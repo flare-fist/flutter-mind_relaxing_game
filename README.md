@@ -1,4 +1,4 @@
-🌿 CalmBreath – A Relaxing Breathing & Focus Game (Flutter)
+# 🌿 CalmBreath – A Relaxing Breathing & Focus Game (Flutter)
 
 CalmBreath is a beautifully minimal, relaxing Flutter app designed to help users:
 
