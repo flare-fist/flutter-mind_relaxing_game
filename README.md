@@ -12,8 +12,8 @@ CalmBreath is a beautifully minimal, relaxing Flutter app designed to help users
 
 The app blends breathing exercises with a gentle bubble-tapping activity, creating a soothing, meditative experience.
 
-✨ Features
-🫁 Guided Breathing (Inside the Bubble)
+## ✨ Features
+### 🫁 Guided Breathing (Inside the Bubble)
 
 INHALE → HOLD → EXHALE
 
@@ -23,7 +23,7 @@ Timer shown inside the bubble
 
 Helps regulate breathing patterns gently
 
-🫧 Relaxing Bubble Game
+### 🫧 Relaxing Bubble Game
 
 A single bubble moves left ↔ right slowly
 
@@ -41,7 +41,7 @@ Tap the bubble → Score + Quote
 
 Tap anywhere else → Score resets
 
-🌟 Positive Affirmations
+### 🌟 Positive Affirmations
 
 Each bubble tap shows a calming quote at the top:
 
@@ -50,7 +50,7 @@ Each bubble tap shows a calming quote at the top:
 “Focus on Peace”
 and more…
 
-🎨 Minimal & Peaceful UI
+### 🎨 Minimal & Peaceful UI
 
 Soft colors
 
@@ -60,12 +60,11 @@ Smooth animations
 
 Perfect for short mindful breaks
 
-📸 App Preview
+### 📸 App Preview
 <p align="center"> <img src="assets/screenshot.png" width="320"> </p>
 
-(Replace with your screenshot)
 
-🚀 How to Run
+### 🚀 How to Run
 git clone https://github.com/<your-username>/<repo>/  
 cd <repo>  
 flutter pub get  
@@ -77,7 +76,7 @@ lib/
 assets/
  └── screenshot.png
 
-🎯 Why This App Exists
+### 🎯 Why This App Exists
 
 CalmBreath promotes relaxation and mental well-being using:
 
@@ -89,7 +88,7 @@ Cognitive light focus
 
 Positive reinforcement
 
-🛠 Built With
+### 🛠 Built With
 
 Flutter
 
@@ -101,6 +100,6 @@ Tween & CurvedAnimation
 
 GestureDetector
 
-📄 License
+### 📄 License
 
 Open-source. Feel free to modify and extend.
