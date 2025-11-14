@@ -37,6 +37,18 @@ class _StressReliefPageState extends State<StressReliefPage>
   String phase = "Inhale";
   int currentTimer = 4;
 
+  // Quotes that appear when bubble is clicked
+  final List<String> quotes = [
+    "Stay Calm 🌿",
+    "You're Doing Great ✨",
+    "Breathe & Relax 💙",
+    "Focus on Peace 🌸",
+    "One Step at a Time 🌼",
+    "You Got This 🌟",
+    "Slow Down & Smile 🙂",
+  ];
+  String currentQuote = "Welcome 👋";
+
   // Bubble Y position stays constant
   double bubbleY = 350;
 
@@ -98,7 +110,6 @@ class _StressReliefPageState extends State<StressReliefPage>
       speed = 450;   // normal
     }
 
-    // Update animation controller with new speed
     _controller.duration = Duration(milliseconds: speed);
     _controller.repeat(reverse: true);
   }
@@ -106,6 +117,10 @@ class _StressReliefPageState extends State<StressReliefPage>
   void popBubble() {
     setState(() {
       score++;
+
+      // change quote every tap
+      currentQuote = quotes[Random().nextInt(quotes.length)];
+
       updateSpeed();
     });
   }
@@ -114,6 +129,7 @@ class _StressReliefPageState extends State<StressReliefPage>
     setState(() {
       score = 0;
       speed = 900;
+      currentQuote = "Stay Relaxed 🌿";
 
       _controller.duration = Duration(milliseconds: speed);
       _controller.repeat(reverse: true);
@@ -128,7 +144,7 @@ class _StressReliefPageState extends State<StressReliefPage>
         backgroundColor: Colors.blue.shade50,
         body: Stack(
           children: [
-            // ---------------- Always Visible Breathing Timer ----------------
+            // -------- POSITIVE QUOTE AT TOP --------
             Positioned(
               top: 40,
               left: 0,
@@ -136,18 +152,12 @@ class _StressReliefPageState extends State<StressReliefPage>
               child: Column(
                 children: [
                   Text(
-                    phase,
-                    style: const TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blueGrey,
-                    ),
-                  ),
-                  Text(
-                    "$currentTimer s",
+                    currentQuote,
+                    textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w600,
+                      color: Colors.black87,
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -156,18 +166,20 @@ class _StressReliefPageState extends State<StressReliefPage>
                     style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
+                      color: Colors.blueGrey,
                     ),
                   ),
                 ],
               ),
             ),
 
-            // ---------------- Breathing Circle ----------------
+            // -------- BREATHING CIRCLE WITH PHASE INSIDE --------
             Center(
               child: AnimatedBuilder(
                 animation: _controller,
                 builder: (_, __) {
                   double size = 150 + (_controller.value * 120);
+
                   return Container(
                     width: size,
                     height: size,
@@ -175,12 +187,34 @@ class _StressReliefPageState extends State<StressReliefPage>
                       color: Colors.blueAccent.withOpacity(0.22),
                       shape: BoxShape.circle,
                     ),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            phase,
+                            style: const TextStyle(
+                              fontSize: 26,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blueGrey,
+                            ),
+                          ),
+                          Text(
+                            "$currentTimer s",
+                            style: const TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   );
                 },
               ),
             ),
 
-            // ---------------- Single Moving Bubble (fixed path) ----------------
+            // -------- SINGLE MOVING BUBBLE (FIXED PATH) --------
             AnimatedBuilder(
               animation: moveAnimation,
               builder: (context, child) {
@@ -193,7 +227,7 @@ class _StressReliefPageState extends State<StressReliefPage>
                       width: 70,
                       height: 70,
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.85),
+                        color: Colors.white.withOpacity(0.9),
                         shape: BoxShape.circle,
                         border: Border.all(color: Colors.blueAccent, width: 3),
                         boxShadow: const [
